@@ -1,4 +1,5 @@
 {
+  "repository": "wodzuu/angular-schema-form-strap-datetimepicker",
   "devDependencies": {
     "del": "^2.2.0",
     "gulp": "^3.5.6",
