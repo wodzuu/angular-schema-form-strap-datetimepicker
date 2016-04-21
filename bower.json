@@ -10,7 +10,12 @@
   "ignore": [
     "**/.*",
     "node_modules",
-    "src"
+    "src",
+	".gitignore",
+	".jshintrc",
+	"package.json",
+	"README.md",
+	"gulpfile.js"
   ],
   "repository": {
     "type": "git",
