@@ -1,0 +1,28 @@
+<input 
+	type="text"
+	size="10"
+	class="{{inputClass}}"
+	placeholder="{{dateFormat}}"
+	ng-required="ngRequired"
+	ng-model="ngModel"
+	ng-disabled="ngDisabled"
+	data-date-type="{{dateType}}"
+	data-min-date="{{minDate}}"
+	data-date-format="{{dateFormat}}"
+	data-autoclose="1"
+	bs-datepicker
+>
+<input 
+	type="text"
+	size="8"
+	class="{{inputClass}}"
+	placeholder="{{timeFormat}}"
+	ng-required="ngRequired"
+	ng-model="ngModel"
+	ng-show="{{showTimePicker}}"
+	ng-disabled="ngDisabled"
+	data-time-type="{{dateType}}"
+	data-time-format="{{timeFormat}}"
+	data-autoclose="1"
+	bs-timepicker
+>

@@ -1,0 +1,23 @@
+{
+  "name": "angular-schema-form-strap-datetimepicker",
+  "description": "Date and time picker for angular-schema-form implemented with angular-strap",
+  "authors": [
+    "Maciej Zientarski"
+  ],
+  "main": "dist/datetimepicker.js",
+  "keywords": ["angular", "json", "schema", "form", "date", "time", "picker"],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "src"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/wodzuu/angular-schema-form-strap-datetimepicker.git"
+  },
+  "dependencies": {
+    "angular-strap": "^2.3.8",
+    "angular-schema-form": "^0.7.13"
+  }
+}

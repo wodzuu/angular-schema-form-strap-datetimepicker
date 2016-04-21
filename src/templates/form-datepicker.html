@@ -1,0 +1,23 @@
+<div class="form-group {{form.htmlClass}} datetimepicker" ng-class="{'has-error': hasError()}">
+	<label class="control-label" ng-show="showTitle()">
+		<i class="fa fa-calendar"></i>
+		{{form.title}}
+	</label>
+	<br/>
+	<date-time-picker 
+		schema-validate="form"
+		name="{{form.key.slice(-1)[0]}}"
+		ng-model="$$value$$"
+		date-format="yyyy-MM-dd"
+		time-format="HH:mm:ss"
+		show-time-picker="{{form.schema.format === 'date-time'}}"
+		input-class="form-control"
+		class="datetimepicker"
+		date-type="iso">
+	</date-time-picker>
+	<div 
+		class="help-block"
+		ng-show="(hasError() && errorMessage(schemaError())) || form.description"
+		ng-bind-html="(hasError() && errorMessage(schemaError())) || form.description">
+	</div>
+</div>
