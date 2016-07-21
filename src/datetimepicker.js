@@ -13,7 +13,8 @@ angular.module('dateTimePicker', ['mgcrea.ngStrap.timepicker', 'mgcrea.ngStrap.d
 			ngDisabled: '=',
 			ngRequired: '=',
 			minDate: '@',
-			dateType: '@'
+			dateType: '@',
+            startWeek: '@'
 		},
 		require: ['ngModel'],
 		link: {
@@ -27,7 +28,7 @@ angular.module('dateTimePicker', ['mgcrea.ngStrap.timepicker', 'mgcrea.ngStrap.d
 				}
 			}
 		}
-	}
+	};
 });
 
 angular.module('schemaForm').config(['schemaFormProvider', 'schemaFormDecoratorsProvider', 'sfPathProvider',
