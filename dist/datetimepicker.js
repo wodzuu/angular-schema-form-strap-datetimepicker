@@ -27,6 +27,9 @@ angular.module('dateTimePicker', ['mgcrea.ngStrap.timepicker', 'mgcrea.ngStrap.d
           scope.showTimePicker = scope.showTimePicker || (scope.showTimePicker === 'true');
         }
         scope.startOfDay = function(date) {
+          if (date === 'today') {
+            return date;
+          }
           var dateStr = date.replace(/"/g, '');
           return new Date(dateStr).setHours(0, 0, 0, 0);
         };
@@ -44,13 +47,10 @@ angular.module('dateTimePicker', ['mgcrea.ngStrap.timepicker', 'mgcrea.ngStrap.d
           ctrl.$options = ctrl.$options || {}
           ctrl.$options.allowInvalid = true;
           ctrl.$validators.minDate = function(value) {
-            if (!scope.minDate || scope.minDate === 'today') {
+            if (!value || !scope.minDate) {
               return true;
             }
-            if (!value) {
-              return true;
-            }
-            var minDate = new Date(scope.minDate.replace(/"/g, ''));
+            var minDate = scope.minDate === 'today' ? new Date() : new Date(scope.minDate.replace(/"/g, ''));
             var valid = value.getTime() >= minDate.getTime();
             return valid;
           }
