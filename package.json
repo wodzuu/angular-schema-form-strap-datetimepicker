@@ -9,7 +9,7 @@
   "bugs": "https://github.com/wodzuu/angular-schema-form-strap-datetimepicker/issues",
   "main": "dist/datetimepicker.js",
   "keywords": ["angular", "json", "schema", "form", "date", "time", "picker"],
-  "version": "0.0.1",
+  "version": "0.1.2",
   "license": "MIT",
   "devDependencies": {
     "del": "^2.2.0",
