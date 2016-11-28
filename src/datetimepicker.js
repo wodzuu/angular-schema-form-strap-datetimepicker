@@ -27,6 +27,9 @@ angular.module('dateTimePicker', ['mgcrea.ngStrap.timepicker', 'mgcrea.ngStrap.d
           scope.showTimePicker = scope.showTimePicker || (scope.showTimePicker === 'true');
         }
         scope.startOfDay = function(date) {
+          if (!date) {
+            return null;
+          }
           if (date === 'today') {
             return date;
           }
