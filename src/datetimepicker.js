@@ -63,8 +63,8 @@ angular.module('dateTimePicker', ['mgcrea.ngStrap.timepicker', 'mgcrea.ngStrap.d
   };
 });
 
-angular.module('schemaForm').config(['schemaFormProvider', 'schemaFormDecoratorsProvider', 'sfPathProvider',
-  function(schemaFormProvider, schemaFormDecoratorsProvider, sfPathProvider) {
+angular.module('schemaForm').config(['schemaFormProvider', 'schemaFormDecoratorsProvider', 'sfPathProvider', 'sfBuilderProvider',
+  function(schemaFormProvider, schemaFormDecoratorsProvider, sfPathProvider, sfBuilderProvider) {
     var datepicker = function(name, schema, options) {
       if (schema.type === 'string' && (schema.format === 'date-time' || schema.format === 'date')) {
         var f = schemaFormProvider.stdFormObj(name, schema, options);
@@ -77,10 +77,11 @@ angular.module('schemaForm').config(['schemaFormProvider', 'schemaFormDecorators
 
     schemaFormProvider.defaults.string.unshift(datepicker);
 
-    schemaFormDecoratorsProvider.addMapping(
+    schemaFormDecoratorsProvider.defineAddOn(
       'bootstrapDecorator',
       'datepicker',
-      'templates/form-datepicker.html'
+      'templates/form-datepicker.html',
+      sfBuilderProvider.stdBuilders
     );
 
   }
