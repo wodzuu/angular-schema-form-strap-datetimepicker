@@ -63,8 +63,8 @@ angular.module('dateTimePicker', ['mgcrea.ngStrap.timepicker', 'mgcrea.ngStrap.d
   };
 });
 
-angular.module('schemaForm').config(['schemaFormProvider', 'schemaFormDecoratorsProvider', 'sfPathProvider',
-  function(schemaFormProvider, schemaFormDecoratorsProvider, sfPathProvider) {
+angular.module('schemaForm').config(['schemaFormProvider', 'schemaFormDecoratorsProvider', 'sfPathProvider', 'sfBuilderProvider',
+  function(schemaFormProvider, schemaFormDecoratorsProvider, sfPathProvider, sfBuilderProvider) {
     var datepicker = function(name, schema, options) {
       if (schema.type === 'string' && (schema.format === 'date-time' || schema.format === 'date')) {
         var f = schemaFormProvider.stdFormObj(name, schema, options);
@@ -77,13 +77,14 @@ angular.module('schemaForm').config(['schemaFormProvider', 'schemaFormDecorators
 
     schemaFormProvider.defaults.string.unshift(datepicker);
 
-    schemaFormDecoratorsProvider.addMapping(
+    schemaFormDecoratorsProvider.defineAddOn(
       'bootstrapDecorator',
       'datepicker',
-      'templates/form-datepicker.html'
+      'templates/form-datepicker.html',
+      sfBuilderProvider.stdBuilders
     );
 
   }
 ]);
-angular.module("dateTimePicker").run(["$templateCache", function($templateCache) {$templateCache.put("templates/datetimepicker.html","<input \n	type=\"text\"\n	size=\"10\"\n	class=\"{{inputClass}}\"\n	placeholder=\"{{dateFormat}}\"\n	ng-required=\"ngRequired\"\n	ng-model=\"ngModel\"\n	ng-disabled=\"ngDisabled\"\n	data-date-type=\"{{dateType}}\"\n	data-min-date=\"{{startOfDay(minDate)}}\"\n	data-date-format=\"{{dateFormat}}\"\n	data-start-week=\"{{startWeek}}\"\n	data-autoclose=\"1\"\n	bs-datepicker\n>\n<input \n	type=\"text\"\n	size=\"8\"\n	class=\"{{inputClass}}\"\n	placeholder=\"{{timeFormat}}\"\n	ng-required=\"ngRequired\"\n	ng-model=\"ngModel\"\n	ng-show=\"{{showTimePicker}}\"\n	ng-disabled=\"ngDisabled\"\n	data-time-type=\"{{dateType}}\"\n	data-time-format=\"{{timeFormat}}\"\n	data-autoclose=\"1\"\n	bs-timepicker\n>");}]);
-angular.module("schemaForm").run(["$templateCache", function($templateCache) {$templateCache.put("templates/form-datepicker.html","<div class=\"form-group {{form.htmlClass}} datetimepicker\" ng-class=\"{\'has-error\': hasError()}\">\n	<label class=\"control-label\" ng-show=\"showTitle()\">\n		<i class=\"fa fa-calendar\"></i>\n		{{form.title}}\n	</label>\n	<br/>\n	<date-time-picker\n		schema-validate=\"form\"\n		name=\"{{form.key.slice(-1)[0]}}\"\n		ng-model=\"$$value$$\"\n		date-format=\"yyyy-MM-dd\"\n		time-format=\"HH:mm:ss\"\n		show-time-picker=\"{{form.schema.format === \'date-time\'}}\"\n		input-class=\"form-control\"\n		class=\"datetimepicker\"\n		start-week=\"{{options.formDefaults.startWeek || 0}}\"\n		date-type=\"iso\">\n	</date-time-picker>\n	<div \n		class=\"help-block\"\n		ng-show=\"(hasError() && errorMessage(schemaError())) || form.description\"\n		ng-bind-html=\"(hasError() && errorMessage(schemaError())) || form.description\">\n	</div>\n</div>");}]);
+angular.module("dateTimePicker").run(["$templateCache", function($templateCache) {$templateCache.put("templates/datetimepicker.html","<input \r\n	type=\"text\"\r\n	size=\"10\"\r\n	class=\"{{inputClass}}\"\r\n	placeholder=\"{{dateFormat}}\"\r\n	ng-required=\"ngRequired\"\r\n	ng-model=\"ngModel\"\r\n	ng-disabled=\"ngDisabled\"\r\n	data-date-type=\"{{dateType}}\"\r\n	data-min-date=\"{{startOfDay(minDate)}}\"\r\n	data-date-format=\"{{dateFormat}}\"\r\n	data-start-week=\"{{startWeek}}\"\r\n	data-autoclose=\"1\"\r\n	bs-datepicker\r\n>\r\n<input \r\n	type=\"text\"\r\n	size=\"8\"\r\n	class=\"{{inputClass}}\"\r\n	placeholder=\"{{timeFormat}}\"\r\n	ng-required=\"ngRequired\"\r\n	ng-model=\"ngModel\"\r\n	ng-show=\"{{showTimePicker}}\"\r\n	ng-disabled=\"ngDisabled\"\r\n	data-time-type=\"{{dateType}}\"\r\n	data-time-format=\"{{timeFormat}}\"\r\n	data-autoclose=\"1\"\r\n	bs-timepicker\r\n>");}]);
+angular.module("schemaForm").run(["$templateCache", function($templateCache) {$templateCache.put("templates/form-datepicker.html","<div class=\"form-group {{form.htmlClass}} datetimepicker\" ng-class=\"{\'has-error\': hasError()}\">\r\n	<label class=\"control-label\" ng-show=\"showTitle()\">\r\n		<i class=\"fa fa-calendar\"></i>\r\n		{{form.title}}\r\n	</label>\r\n	<br/>\r\n	<date-time-picker\r\n		schema-validate=\"form\"\r\n		name=\"{{form.key.slice(-1)[0]}}\"\r\n		sf-field-model\r\n		date-format=\"yyyy-MM-dd\"\r\n		time-format=\"HH:mm:ss\"\r\n		show-time-picker=\"{{form.schema.format === \'date-time\'}}\"\r\n		input-class=\"form-control\"\r\n		class=\"datetimepicker\"\r\n		start-week=\"{{options.formDefaults.startWeek || 0}}\"\r\n		date-type=\"iso\">\r\n	</date-time-picker>\r\n	<div\r\n		class=\"help-block\"\r\n		ng-show=\"(hasError() && errorMessage(schemaError())) || form.description\"\r\n		ng-bind-html=\"(hasError() && errorMessage(schemaError())) || form.description\">\r\n	</div>\r\n</div>");}]);

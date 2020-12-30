@@ -7,7 +7,7 @@
 	<date-time-picker
 		schema-validate="form"
 		name="{{form.key.slice(-1)[0]}}"
-		ng-model="$$value$$"
+		sf-field-model
 		date-format="yyyy-MM-dd"
 		time-format="HH:mm:ss"
 		show-time-picker="{{form.schema.format === 'date-time'}}"
@@ -16,7 +16,7 @@
 		start-week="{{options.formDefaults.startWeek || 0}}"
 		date-type="iso">
 	</date-time-picker>
-	<div 
+	<div
 		class="help-block"
 		ng-show="(hasError() && errorMessage(schemaError())) || form.description"
 		ng-bind-html="(hasError() && errorMessage(schemaError())) || form.description">
